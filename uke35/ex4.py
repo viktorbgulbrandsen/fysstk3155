@@ -23,7 +23,7 @@ degrees = range(2, 11)
 mse_train_list = []
 mse_test_list = []
 
-from ex3 import OLS_parameters, mean_squared_error
+from uke35.ex3 import OLS_parameters, mean_squared_error
 
 for d in degrees:
     X_poly = polynomial_features(x, d)
