@@ -1,19 +1,9 @@
 import numpy as np
-
-try:
-    import autograd.numpy as anp
-    from autograd import grad
-    HAS_AUTOGRAD = True
-except ImportError:
-    HAS_AUTOGRAD = False
-
-try:
-    import jax.numpy as jnp
-    import jax
-    from jax import grad as jax_grad
-    HAS_JAX = True
-except ImportError:
-    HAS_JAX = False
+import autograd.numpy as anp
+from autograd import grad
+import jax.numpy as jnp
+import jax
+from jax import grad as jax_grad
 
 
 class GradientDescent:
@@ -33,10 +23,6 @@ class GradientDescent:
         if method not in methods:
             raise ValueError(f"Method must be one of {list(methods.keys())}")
         
-        if auto_diff == 'autograd' and not HAS_AUTOGRAD:
-            raise ValueError("autograd not installed")
-        if auto_diff == 'jax' and not HAS_JAX:
-            raise ValueError("jax not installed")
             
         iterations = epochs if epochs else max_iter
         theta = methods[method](model, X, y, learning_rate, iterations, tolerance, auto_diff, lr_schedule, **kwargs)
