@@ -1,0 +1,4 @@
+matplotlib
+numpy
+scitkit-learn
+ipykernel #for running the notebooks in venv
